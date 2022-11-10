@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Scrapper</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+    }
+    img {
+      position: fixed;
+      min-width: 1800px;
+    }
+    div {
+      text-align: center;
+      position: absolute;
+    }
+    h1,
+    td,
+    th {
+      color: white;
+    }
+  </style>
+  <body>
+    <img
+      src="https://hellovenky.com/wp-content/uploads/2022/08/Technology-backgroung.jpg"
+    />
+    <div>
+      <main class="container">
+        <hgroup>
+          <h1>Search Results for "{{keyword}}":</h1>
+          <a target="_blank" href="/export?keyword={{keyword}}"
+            >Export to file</a
+          >
+        </hgroup>
+        <figure>
+          <table>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for job in jobs %}
+              <tr>
+                <td>{{job.position}}</td>
+                <td>{{job.company}}</td>
+                <td>{{job.location}}</td>
+                <td>
+                  <a href="{{job.link}}" target="_blank">Apply Now &rarr;</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </figure>
+      </main>
+    </div>
+  </body>
+</html>
